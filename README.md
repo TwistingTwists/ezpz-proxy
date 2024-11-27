@@ -1,5 +1,7 @@
 # Easy Proxy Documentation
 
+This is a fork of https://github.com/AssetsArt/easy-proxy
+
 **Easy Proxy** is a simple proxy server designed to provide essential features for network traffic management and proxying. It is based on [Pingora](https://github.com/cloudflare/pingora).
 
 ## Installation or Upgrade
