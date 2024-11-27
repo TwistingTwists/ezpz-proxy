@@ -4,3 +4,10 @@ Cargo.lock
 /target
 .config
 .DS_Store
+
+socketserver
+./http.server 
+
+*.crt 
+*.key
+acme.json

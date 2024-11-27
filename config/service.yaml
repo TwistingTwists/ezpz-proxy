@@ -1,0 +1,40 @@
+# Select the service to be proxied based on the specified header
+header_selector: x-easy-proxy-svc
+
+# Services to be proxied
+services:
+  - name: my-service
+    type: http
+    algorithm: round_robin # Options: round_robin, random, consistent, weighted
+    endpoints:
+      - ip: 127.0.0.1
+        port: 3000
+
+# TLS Configuration
+tls:
+  - name: my-tls
+    type: custom # Options: acme, custom
+    # If type is 'acme', the following fields are required:
+    # acme:
+    #   provider: letsencrypt # Options: letsencrypt, buypass (default: letsencrypt)
+    #   email: admin@domain.com
+    key: ./provab-key.key
+    cert: ./provab-certi.crt 
+    # Optional chain certificates
+    # chain:
+    #   - /etc/easy-proxy/ssl/chain.pem
+
+# Routes to be proxied/
+routes:
+  - route:
+      type: host
+      value: localhost
+    paths: 
+      - pathType: Exact
+        path: /
+        service:
+          name: my-service
+    name: provab-prod
+    tls: # Optional TLS settings for this route
+      name: my-tls
+      # redirect: true # Redirect to HTTPS (default: false)

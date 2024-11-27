@@ -1,0 +1,23 @@
+proxy:
+  http: "0.0.0.0:8080"
+  https: "0.0.0.0:8043"
+config_dir: "./config"
+# Optional
+acme_store: "./acme.json" # Automatically generated
+
+pingora:
+  # Refer to Pingora's daemon documentation: https://github.com/cloudflare/pingora/blob/main/docs/user_guide/daemon.md
+  daemon: true
+  # Refer to Pingora's configuration documentation: https://github.com/cloudflare/pingora/blob/main/docs/user_guide/conf.md
+  threads: 6
+  # Optional settings (uncomment to use)
+  upstream_keepalive_pool_size: 10
+  # work_stealing: true
+  # error_log: /var/log/pingora/error.log
+  # pid_file: /run/pingora.pid
+  # upgrade_sock: /tmp/pingora_upgrade.sock
+  # user: nobody
+  # group: webusers
+  grace_period_seconds: 60
+  graceful_shutdown_timeout_seconds: 10
+  ca_file: ./provab-certi.crt
